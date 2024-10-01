@@ -1,9 +1,8 @@
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-function-docstring
+class Calculation: 
+    def __init__(self,first, second, operation)
+        self.a = a
+        self.b = b
+        self.operation = operation
 
-# Addition
-def add(first, second):
-    return first + second
-
-def subtract(first, second):
-    return first - second
+    def get_ans(self):
+        return self.operation(self.first, self.b)
