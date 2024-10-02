@@ -1,4 +1,4 @@
-class Calculation: 
+class Calculation:
     def __init__(self,first, second, operation):
         self.first = first
         self.second = second

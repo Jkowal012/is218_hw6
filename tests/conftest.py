@@ -1,3 +1,4 @@
+# Was getting an error trying to locate calculator folder, this fixed it
 import sys
 import os
 

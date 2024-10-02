@@ -1,6 +1,5 @@
 #Test for calculator function
 from calculator.operations import add, multiply, subtract, divide
-#from calculator import Calculator
 
 def test_add():
     #Testing addition function
@@ -17,3 +16,4 @@ def test_mult():
 def test_div():
     #Testing division function
     assert divide(5,5) == 1
+    
