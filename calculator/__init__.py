@@ -2,25 +2,34 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 
-# Do the work, create the methods
 from calculator.calculation import Calculation
 from calculator.operations import add, subtract, multiply, divide
-# Creating the methods
+from calculator.calculations import Calculations  
+from calculator.operations import add, subtract, multiply, divide  
+from calculator.calculation import Calculation  
+from decimal import Decimal  
+from typing import Callable  
+
 class Calculator:
     @staticmethod
-    def add(first, second):
-        calculation = Calculation(first, second, add)
-        return calculation.get_ans()
+    def _perform_operation(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]) -> Decimal:
+        calculation = Calculation.create(a, b, operation)
+        Calculations.add_calculation(calculation)
+        return calculation.perform()
+    
     @staticmethod
-    def subtract(first, second):
-        calculation = Calculation(first, second, subtract)
-        return calculation.get_ans
+    def add(a: Decimal, b: Decimal) -> Decimal:
+        return Calculator._perform_operation(a, b, add)
+    
     @staticmethod
-    def multiply(first, second):
-        calculation = Calculation(first, second, multiply)
-        return calculation.get_ans
+    def subtract(a: Decimal, b: Decimal) -> Decimal:
+        return Calculator._perform_operation(a, b, subtract)
+    
     @staticmethod
-    def divide(first, second):
-        calculation = Calculation(first, second, divide)
-        return calculation.get_ans
+    def multiply(a: Decimal, b: Decimal) -> Decimal:
+        return Calculator._perform_operation(a, b, multiply)
+    
+    @staticmethod
+    def divide(a: Decimal, b: Decimal) -> Decimal:
+        return Calculator._perform_operation(a, b, divide)
     

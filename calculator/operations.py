@@ -1,19 +1,14 @@
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=missing-class-docstring
+from decimal import Decimal
+def add(a: Decimal, b: Decimal) -> Decimal:
+    return a + b
 
-# Addition
-def add(first, second):
-    return first + second
+def subtract(a: Decimal, b: Decimal) -> Decimal:
+    return a - b
 
-#Subtraction
-def subtract(first, second):
-    return first - second
+def multiply(a: Decimal, b: Decimal) -> Decimal:
+    return a * b
 
-#Multiplication
-def multiply(first, second):
-    return first * second
-
-#Division
-def divide(first, second):
-    return first / second
+def divide(a: Decimal, b: Decimal) -> Decimal:
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a / b
