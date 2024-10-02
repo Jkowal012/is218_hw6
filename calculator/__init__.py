@@ -1,3 +1,7 @@
+# pylint: disable=missing-module-docstring
+# pylint: disable=missing-function-docstring
+# pylint: disable=missing-class-docstring
+
 # Do the work, create the methods
 from calculator.calculation import Calculation
 from calculator.operations import add, subtract, multiply, divide
