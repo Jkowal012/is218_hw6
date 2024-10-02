@@ -1,23 +1,13 @@
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=missing-class-docstring
+from calculator import Calculator
 
-#Test for calculator function
-from calculator.operations import add, multiply, subtract, divide
+def test_addition():   
+    assert Calculator.add(2,2) == 4
 
-def test_add():
-    #Testing addition function
-    assert add(4,4) == 8
+def test_subtraction():  
+    assert Calculator.subtract(2,2) == 0
 
-def test_sub():
-    #Testing subtraction function
-    assert subtract(10,2) == 8
+def test_divide():   
+    assert Calculator.divide(2,2) == 1
 
-def test_mult():
-    #Testing multiplication function
-    assert multiply(10,10) == 100
-
-def test_div():
-    #Testing division function
-    assert divide(5,5) == 1
-    
+def test_multiply():  
+    assert Calculator.multiply(2,2) == 4
