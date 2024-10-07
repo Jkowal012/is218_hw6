@@ -2,22 +2,16 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 
-from .calculation import Calculation
-from .calculations import Calculations
+from calculator.calculation import Calculation
+from calculator.calculations import Calculations
 from .operations import add, subtract, multiply, divide
 from decimal import Decimal
 from typing import Callable
-#from calculation import Calculation
-#from .calculation import Calculation
-#from .operations import add, subtract, multiply, divide
-#from .calculations import Calculations  
-#from .operations import add, subtract, multiply, divide  
-#from decimal import Decimal  
-#from typing import Callable  
 
 class Calculator:
     @staticmethod
     def _perform_operation(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]) -> Decimal:
+        """Create and perform a calculation, then return the result."""
         calculation = Calculation.create(a, b, operation)
         Calculations.add_calculation(calculation)
         return calculation.perform()
