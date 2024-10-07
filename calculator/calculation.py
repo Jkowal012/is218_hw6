@@ -8,7 +8,7 @@ class Calculation:
         self.b = b
         self.operation = operation
 
-@staticmethod    
+@staticmethod   
 def create(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]):
     return Calculation(a, b, operation)
 

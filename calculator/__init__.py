@@ -2,11 +2,12 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 
-from calculator.calculation import Calculation
-from calculator.operations import add, subtract, multiply, divide
-from calculator.calculations import Calculations  
-from calculator.operations import add, subtract, multiply, divide  
-from calculator.calculation import Calculation  
+
+from calculation import Calculation
+from .calculation import Calculation
+from .operations import add, subtract, multiply, divide
+from .calculations import Calculations  
+from .operations import add, subtract, multiply, divide  
 from decimal import Decimal  
 from typing import Callable  
 
