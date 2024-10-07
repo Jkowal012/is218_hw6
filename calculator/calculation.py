@@ -1,13 +1,19 @@
-# pylint: disable=too-few-public-methods
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-function-docstring
+from decimal import Decimal
+from typing import Callable
+from calculator.operations import add, subtract, multiply, divide
 
 class Calculation:
-    def __init__(self,first, second, operation):
-        self.first = first
-        self.second = second
+    def __init__(self, a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]):
+        self.a = a
+        self.b = b
         self.operation = operation
 
-    def get_ans(self):
-        return self.operation(self.first, self.second)
+@staticmethod    
+def create(a: Decimal, b: Decimal, operation: Callable[[Decimal, Decimal], Decimal]):
+    return Calculation(a, b, operation)
+
+def perform(self) -> Decimal:
+        return self.operation(self.a, self.b)
+
+def __repr__(self):
+        return f"Calculation({self.a}, {self.b}, {self.operation.__name__})"
