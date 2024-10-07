@@ -2,14 +2,18 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 
-
-from calculation import Calculation
 from .calculation import Calculation
+from .calculations import Calculations
 from .operations import add, subtract, multiply, divide
-from .calculations import Calculations  
-from .operations import add, subtract, multiply, divide  
-from decimal import Decimal  
-from typing import Callable  
+from decimal import Decimal
+from typing import Callable
+#from calculation import Calculation
+#from .calculation import Calculation
+#from .operations import add, subtract, multiply, divide
+#from .calculations import Calculations  
+#from .operations import add, subtract, multiply, divide  
+#from decimal import Decimal  
+#from typing import Callable  
 
 class Calculator:
     @staticmethod
