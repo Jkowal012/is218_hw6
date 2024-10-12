@@ -9,16 +9,18 @@ class App:
 
     def load_plugins(self):
         plugins_package = 'app.plugins'
-        for _, plugin_name, is_pkg in pkgutil.iter_modules([plugins_package.replace('.', '/')]):
+        package = importlib.import_module(plugins_package)
+        package_path = package.__path__
+        for finder, plugin_name, is_pkg in pkgutil.iter_modules(package_path):
             if is_pkg:
-                plugin_module = importlib.import_module(f'{plugins_package}.{plugin_name}')
-                for item_name in dir(plugin_module):
-                    item = getattr(plugin_module, item_name)
-                    try:
-                        if issubclass(item, (Command)):
-                            self.command_handler.register_command(plugin_name, item())
-                    except TypeError:
-                        continue
+                module_name = f'{plugins_package}.{plugin_name}'
+                plugin_module = importlib.import_module(module_name)
+                if hasattr(plugin_module, 'plugin_name') and hasattr(plugin_module, 'plugin_class'):
+                    command_name = plugin_module.plugin_name
+                    command_class = plugin_module.plugin_class
+                    if issubclass(command_class, Command):
+                        self.command_handler.register_command(command_name, command_class())
+
     def start(self):
         self.load_plugins()
         print("Type 'exit' to exit.")

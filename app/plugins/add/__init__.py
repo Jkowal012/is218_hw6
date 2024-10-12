@@ -1,7 +1,7 @@
 # app/plugins/add/__init__.py
 
 from app.commands import Command
-from app.calculator.operations import add
+from ...calculator.operations import add
 
 class AddCommand(Command):
     def execute(self, *args):

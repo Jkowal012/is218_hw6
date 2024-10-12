@@ -2,8 +2,8 @@
 # pylint: disable=missing-function-docstring
 # pylint: disable=missing-class-docstring
 
-from calculator.calculation import Calculation
-from calculator.calculations import Calculations
+from .calculation import Calculation
+from .calculations import Calculations
 from .operations import add, subtract, multiply, divide
 from decimal import Decimal
 from typing import Callable
