@@ -1,16 +1,38 @@
 import pytest
-from decimal import Decimal
-from app.calculator.calculation import Calculation
 from app.calculator.operations import add, subtract, multiply, divide
 
+def test_add():
+    assert add(2, 3) == 5
 
-def test_operation(a, b, operation, expected):
-    '''Testing various operations'''
-    calculation = Calculation.create(a, b, operation)
-    assert calculation.perform() == expected, f"{operation.__name__} operation failed"
+def test_add_random(faker):
+    a = faker.random_number()
+    b = faker.random_number()
+    assert add(a, b) == a + b
+
+def test_subtract():
+    assert subtract(5, 3) == 2
+
+def test_subtract_random(faker):
+    a = faker.random_number()
+    b = faker.random_number()
+    assert subtract(a, b) == a - b
+
+def test_multiply():
+    assert multiply(2, 3) == 6
+
+def test_multiply_random(faker):
+    a = faker.random_number()
+    b = faker.random_number()
+    assert multiply(a, b) == a * b
+
+def test_divide():
+    assert divide(6, 3) == 2
+
+def test_divide_random(faker):
+    a = faker.random_number()
+    b = faker.random_number() or 1  # Avoid zero
+    assert divide(a, b) == a / b
 
 def test_divide_by_zero():
-    '''Testing the divide by zero exception'''
-    with pytest.raises(ValueError, match="Cannot divide by zero"):
-        calculation = Calculation(Decimal('10'), Decimal('0'), divide)
-        calculation.perform()
+    with pytest.raises(ValueError):
+        divide(6, 0)
