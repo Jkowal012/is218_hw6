@@ -5,6 +5,7 @@ class BaseOperationCommand(Command):
 
     def execute(self, *args):
         if len(args) != 2:
+            command_name = self.__class__.__name__.replace('Command', '').lower()
             print(f"Usage: {self.__class__.__name__.replace('Command', '').lower()} <num1> <num2>")
             return
         try:
