@@ -31,3 +31,4 @@ jobs:
         pytest --cov
       env:
         ENVIRONMENT: TESTING
+        LOG_LEVEL: WARNING
