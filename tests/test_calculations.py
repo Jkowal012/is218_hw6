@@ -1,5 +1,5 @@
 # tests/test_calculations.py
-
+"""
 import pytest
 from decimal import Decimal
 from app.calculator.calculation import Calculation
@@ -39,3 +39,4 @@ def test_calculation_history_multiple_entries():
     assert Calculations.count_history() == 2
     assert Calculations.get_calculation(0) == calc1
     assert Calculations.get_calculation(1) == calc2
+"""

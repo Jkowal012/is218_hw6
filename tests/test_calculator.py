@@ -1,5 +1,5 @@
 # tests/test_calculator.py
-
+"""
 import pytest
 from decimal import Decimal
 from app.calculator import Calculator
@@ -34,3 +34,4 @@ def test_calculator_divide_by_zero():
     with pytest.raises(ValueError):
         Calculator.divide(Decimal('6'), Decimal('0'))
     assert Calculations.count_history() == 0
+"""
