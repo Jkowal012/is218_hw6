@@ -1,4 +1,5 @@
 # app/commands/__init__.py
+import logging 
 
 class Command:
     def execute(self, *args):
@@ -13,7 +14,7 @@ class CommandHandler:
     
     def execute_command(self, input_line):
         if input_line.lower() == 'exit':
-            print("Goodbye!")
+            logging.info("Goodbye!")
             exit(0)
         parts = input_line.strip().split()
         if not parts:
@@ -24,6 +25,6 @@ class CommandHandler:
             try:
                 command.execute(*args)
             except Exception as e:
-                print(f"Error: {e}")
+                logging.error(f"Error: {e}")
         else:
-            print(f"Unknown command: {command_name}")
+            logging.warning(f"Unknown command: {command_name}")
