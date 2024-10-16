@@ -1,23 +1,35 @@
+# app/__init__.py
+
 import os
 from dotenv import load_dotenv
 import logging
 import pkgutil
 import importlib
+
+load_dotenv()
+
+# Configure logging at the module level
+log_level = os.environ.get('LOG_LEVEL', 'WARNING').upper()
+logging.basicConfig(
+    level=getattr(logging, log_level, logging.WARNING),
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
 from app.commands import CommandHandler
 from app.commands import Command
 
 class App:
     def __init__(self):
-        load_dotenv()
+        # Access settings from environment or use default values
         self.settings = os.environ.copy()
         self.settings.setdefault('ENVIRONMENT', 'PRODUCTION')
-        self.settings.setdefault('LOG_LEVEL', 'WARNING')
 
-        # Configure logging
-        log_level = self.settings.get('LOG_LEVEL', 'WARNING').upper()
-        logging.basicConfig(level=getattr(logging, log_level))
-
+        # Configure other app components
         self.command_handler = CommandHandler()
+
+        # Configure logging within the class, if needed
+        log_level = self.settings.get('LOG_LEVEL', 'WARNING').upper()
+        logging.getLogger().setLevel(getattr(logging, log_level, logging.WARNING))
 
     def get_environment_variable(self, envvar: str = 'ENVIRONMENT'):
         return self.settings.get(envvar)
@@ -41,10 +53,3 @@ class App:
         print("Type 'exit' to exit.")
         while True:
             self.command_handler.execute_command(input(">>> ").strip())
-
-# Configure logging
-log_level = self.settings.get('LOG_LEVEL', 'WARNING').upper()
-logging.basicConfig(
-    level=getattr(logging, log_level),
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
