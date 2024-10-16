@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+import logging
 import pkgutil
 import importlib
 from app.commands import CommandHandler
@@ -5,7 +8,19 @@ from app.commands import Command
 
 class App:
     def __init__(self):
+        load_dotenv()
+        self.settings = os.environ.copy()
+        self.settings.setdefault('ENVIRONMENT', 'PRODUCTION')
+        self.settings.setdefault('LOG_LEVEL', 'WARNING')
+
+        # Configure logging
+        log_level = self.settings.get('LOG_LEVEL', 'WARNING').upper()
+        logging.basicConfig(level=getattr(logging, log_level))
+
         self.command_handler = CommandHandler()
+
+    def get_environment_variable(self, envvar: str = 'ENVIRONMENT'):
+        return self.settings.get(envvar)
 
     def load_plugins(self):
         plugins_package = 'app.plugins'
