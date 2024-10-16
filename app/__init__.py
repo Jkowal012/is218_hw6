@@ -41,3 +41,10 @@ class App:
         print("Type 'exit' to exit.")
         while True:
             self.command_handler.execute_command(input(">>> ").strip())
+
+# Configure logging
+log_level = self.settings.get('LOG_LEVEL', 'WARNING').upper()
+logging.basicConfig(
+    level=getattr(logging, log_level),
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
