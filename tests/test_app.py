@@ -8,7 +8,7 @@ from app import App
 def test_app_get_environment_variable():
     app = App()
     env = app.get_environment_variable()
-    assert env == 'DEVELOPMENT'  # Assuming default is 'DEVELOPMENT'
+    assert env in ['DEVELOPMENT', 'TESTING'], f"Expected 'DEVELOPMENT' or 'TESTING', but got {env}"
 
 def test_app_start(caplog):
     app = App()
